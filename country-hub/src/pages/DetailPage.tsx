@@ -2,7 +2,20 @@ import React from 'react'
 
 const DetailPage = () => {
   return (
-    <div>DetailPage</div>
+    <div>
+      <p>etgeg</p>
+      <p>etgeg</p>
+      <p>etgeg</p>
+      <p>etgeg</p>
+      <p>etgeg</p>
+      <p>etgeg</p>
+      <p>etgeg</p>
+      <p>etgeg</p>
+      <p>etgeg</p>
+      <p>etgeg</p>
+      <p>etgeg</p>
+      <p>etgeg</p>
+    </div>
   )
 }
 

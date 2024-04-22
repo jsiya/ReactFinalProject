@@ -1,4 +1,5 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { Country } from "../../models/Country";
 
 export interface ICountry {
     isLoading: boolean
