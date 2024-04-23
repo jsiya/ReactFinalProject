@@ -13,10 +13,12 @@ export const router = createBrowserRouter([
           {
             path: '/details/:cca3',
             element: <DetailPage/>,
+            errorElement: <ErrorPage/>
           },
           {
             path: '/allCountries',
             element: <MainPage/>,
+            errorElement: <ErrorPage/>
           },
         ],
         errorElement: <ErrorPage/>
