@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { countriesAPI } from '../services/CountryService';
 import { Country } from '../models/Country';
+import { TileLayer , MapContainer, Marker, Popup  } from "react-leaflet"
+
 
 const DetailPage: React.FC = () => {
   const { cca3 } = useParams<{ cca3: string }>();
@@ -13,7 +15,6 @@ const DetailPage: React.FC = () => {
   useEffect(() => {
     if (countries) {
       const foundCountry = countries.find((c: Country) => c.cca3 == cca3);
-      console.log(foundCountry)
       if (foundCountry) {
         setCountry(foundCountry);
         setCurrencyCodes(Object.keys(foundCountry.currencies));
@@ -81,6 +82,16 @@ const DetailPage: React.FC = () => {
       <div className='images'>
         <img className='flag-img' src={country.flags.png} alt={country.flags.alt} />
         <img className='coa' src={country.coatOfArms.png} alt="" />
+        
+        <MapContainer center={[country.latlng[0], country.latlng[1]]} zoom={5} style={{ height: "250px" }}>
+          <TileLayer
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"/>
+          <Marker position={[country.latlng[0], country.latlng[1]]}>
+            <Popup>{country.name.common}</Popup>
+          </Marker>
+        </MapContainer>
+
       </div>
     </div>
   );

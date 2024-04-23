@@ -5,6 +5,9 @@ import { FaBars } from 'react-icons/fa';
 import { Container } from './NavbarStyles';
 import Sidebar from '../SiderBar/SideBar';
 
+interface NavbarProps {
+  //onFilterChange: (filters: { independent: string; region: string[]; population: [number, number] }) => void;
+}
 
 const Navbar = () => {
 

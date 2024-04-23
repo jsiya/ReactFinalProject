@@ -46,6 +46,7 @@ const MainPage: React.FC = () => {
     setDisplayedCountries(6);
   };
 
+  
   const handleLoadMore = () => {
     if (filteredCountries) {
       setDisplayedCountries(prevCount => Math.min(prevCount + countriesPerPage, filteredCountries.length));
