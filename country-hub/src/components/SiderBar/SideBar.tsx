@@ -22,17 +22,19 @@ const [disabled, setDisabled] = useState(false);
   return (
     <Container sidebar={active}>
       <Content>
-        <section>
+        <section className='filters-h'>
           <h3>Filters</h3>
         </section>
 
-        <section>
-          <label htmlFor="independent">Independent</label>
-          <Segmented id='independent' options={['All', 'Yes', 'No']} className='radio' />
+        <section className='filter-sec'>
+        <section className='filter-sec-inner'>
+          <label className='filter-label' htmlFor="independent">Independent</label>
+          <label className='filter-label' htmlFor="selection">Region</label>
+          <label className='filter-label' htmlFor="range">Population</label>
         </section>
 
-        <section>
-          <label htmlFor="selection">Region</label>
+        <section className='filter-sec-inner filters'>
+          <Segmented id='independent' options={['All', 'Yes', 'No']} className='radio' />
           <Space style={{ width: '80%' }} direction="vertical">
             <Select
               id='selection'
@@ -50,10 +52,8 @@ const [disabled, setDisabled] = useState(false);
                 { value: 'North America', label: 'North America' },
               ]}/>
           </Space>
+          <Slider style={{ width: '80%' }} id='range' range defaultValue={[0, 5000000000000]}/>
         </section>
-        <section>
-          <label htmlFor="range">Population</label>
-          <Slider style={{ width: '50%' }} id='range' range defaultValue={[20, 50]}/>
         </section>
       </Content>
     </Container>

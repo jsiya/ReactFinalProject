@@ -14,7 +14,7 @@ const Card: React.FC<CardProps> = ({ country, to }) => {
     const currency = country.currencies?.[Object.keys(country.currencies)[0]];
     // console.log(currency?.name)
   return (
-    <Link to={to || `/details`} className='card-link'>
+    <Link to={`/details/${country.cca3}`} className='card-link'>
     <div className='card'>
         <div className='img-sec'>
         <img className='flag' src={country.flags.png} alt="" />

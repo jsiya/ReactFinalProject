@@ -8,7 +8,7 @@ export const Container = styled.div<ContainerProps>`
   background-color: white;
   position: fixed;
   height: 100%;
-  top: 11%;
+  top: 91px;
   right: 0px;
   width: 500px;
   right: ${(props) => (props.sidebar ? '0' : '-100%')};
@@ -29,5 +29,5 @@ export const Container = styled.div<ContainerProps>`
 `;
 
 export const Content = styled.div`
-  margin-top: 100px;
+  margin-top: 10px;
 `;

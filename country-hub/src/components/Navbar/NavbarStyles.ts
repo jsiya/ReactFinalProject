@@ -10,7 +10,7 @@ export const Container = styled.div`
     align-items: center;
     justify-content: space-between;
     background-color: white;
-    box-shadow: 0 0 20px 3px;
+    box-shadow: 0 -4px 10px 2px;
 
     >svg{
         color: white;

@@ -11,7 +11,7 @@ export const router = createBrowserRouter([
         element: <App/>,
         children: [
           {
-            path: '/details',
+            path: '/details/:cca3',
             element: <DetailPage/>,
           },
           {
