@@ -5,6 +5,7 @@ import SearchBar from '../components/SearchBar/SearchBar';
 import Card from '../components/Card/Card';
 import { Country } from '../models/Country';
 import { Empty, Button, Flex, Spin } from 'antd';
+import { useCountryContext } from '../contexts/FilterContext';
 
 const MainPage: React.FC = () => {
   const { data: countries, isLoading, isError } = countriesAPI.useFetchAllCountriesQuery();
@@ -12,7 +13,7 @@ const MainPage: React.FC = () => {
   //search
   const [searchInput, setSearchInput] = useState<string>('');
   const [searchCategory, setSearchCategory] = useState<string>('1'); 
-  const [filteredCountries, setFilteredCountries] = useState<Country[] | null>(null);
+  const { filterData, setFilterData } = useCountryContext();
 
   //load more
   const [displayedCountries, setDisplayedCountries] = useState<number>(6);
@@ -42,14 +43,14 @@ const MainPage: React.FC = () => {
       });
     }
   
-    setFilteredCountries(newFilteredCountries);
+    setFilterData(newFilteredCountries);
     setDisplayedCountries(6);
   };
 
   
   const handleLoadMore = () => {
-    if (filteredCountries) {
-      setDisplayedCountries(prevCount => Math.min(prevCount + countriesPerPage, filteredCountries.length));
+    if (filterData) {
+      setDisplayedCountries(prevCount => Math.min(prevCount + countriesPerPage, filterData.length));
     }
   };
 
@@ -66,9 +67,9 @@ const MainPage: React.FC = () => {
     <div>
       <SearchBar handleSearch={handleSearch} setSearchCategory={setSearchCategory} setSearchInput={setSearchInput} />
 
-      {filteredCountries && (
+      {filterData && (
         <div className='cards-sec'>
-          {filteredCountries.slice(0, displayedCountries).map((country: Country, index: number) => (
+          {filterData.slice(0, displayedCountries).map((country: Country, index: number) => (
             <Link className='card-link' key={index} to={`/details/${country.cca3}`}>
               <Card key={index} country={country} />
             </Link>
@@ -76,11 +77,11 @@ const MainPage: React.FC = () => {
         </div>
       )}
 
-      {filteredCountries && filteredCountries.length > displayedCountries && (
+      {filterData && filterData.length > displayedCountries && (
         <Button className='load-more-btn' onClick={handleLoadMore}>See more countries</Button>
       )}
 
-      {filteredCountries && filteredCountries.length === 0 && <Empty />}
+      {filterData && filterData.length === 0 && <Empty />}
     </div>
   );
 }
